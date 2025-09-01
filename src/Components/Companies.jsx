@@ -427,6 +427,11 @@ function Companies() {
                 <Box sx={{
                     marginTop: '50px'
                 }}>
+                <Grid container spacing={2}></Grid>
+                    <Grid size={{ xs: 12, md: 6, lg: 6, xl: 6   }}>
+
+                    
+
                     <Typography variant='h5' sx={{
                         fontWeight: 'bold',
                         textAlign: 'center'
@@ -459,7 +464,9 @@ function Companies() {
                             success.
                         </Typography>
                     </Stack>
+                    </Grid>
                 </Box>
+                <Grid size={{ xs: 12, md: 6, lg: 6, xl: 6 }}></Grid>
                 <Box sx={{
                     width: '75%',
                     border: '1px solid gray',
