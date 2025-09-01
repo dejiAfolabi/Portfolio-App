@@ -43,24 +43,34 @@ function Companies() {
         { img: '/Images/stand.png', text: 'E-commerce development', subText: 'Ecommerce website offering access to the latest and greatest gadgets and accessories.' }
     ]
     return (
-        <>
-            <Box>
+        <Container maxWidth='lg' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={{ width: '100%', maxWidth: '1000px' }}>
                 <Typography sx={{
                     display: 'flex',
                     color: 'black',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '10px',
+                    fontSize: { xs: '12px', md: '10px' },
                     fontWeight: 'bold',
-                    marginTop: '100px'
+                    marginTop: { xs: '60px', md: '100px' }
                 }}>
                     My awesome clients
                 </Typography>
-                <Box>
-                    <Grid container spacing={2} >
+                <Box sx={{ mt: { xs: 2, md: 3 } }}>
+                    <Grid container spacing={2} sx={{ justifyContent: 'center' }}>
                         {companyData.map((data, index) => (
-                            <Grid key={index} size={{ xs: 6, md: 2, lg: 2, xl: 2 }}>
-                                <img src={data.img} alt={data.name} style={{ width: '50%', }} />
+                            <Grid key={index} size={{ xs: 6, sm: 4, md: 2, lg: 2, xl: 2 }}>
+                                <Box sx={{ display: 'flex', justifyContent: 'center', p: 1 }}>
+                                    <img 
+                                        src={data.img} 
+                                        alt={data.name} 
+                                        style={{ 
+                                            width: '70%', 
+                                            maxWidth: '80px',
+                                            height: 'auto'
+                                        }} 
+                                    />
+                                </Box>
                             </Grid>
                         ))}
                     </Grid>
@@ -70,9 +80,9 @@ function Companies() {
                     color: 'black',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '10px',
+                    fontSize: { xs: '12px', md: '10px' },
                     fontWeight: 'bold',
-                    marginTop: '100px',
+                    marginTop: { xs: '60px', md: '100px' },
                     textTransform: 'uppercase'
                 }}>
                     my skills
@@ -83,18 +93,21 @@ function Companies() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     fontWeight: 'bold',
-                    marginTop: '30px',
+                    fontSize: { xs: '1.5rem', md: '1.5rem' },
+                    marginTop: { xs: '20px', md: '30px' },
                 }}>
                     What I do
                 </Typography>
-                <Stack>
+                <Stack sx={{ px: { xs: 2, md: 0 } }}>
                     <Typography variant='body2' sx={{
                         display: 'flex',
                         color: 'gray',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontWeight: 'bold',
-                        marginTop: '30px',
+                        textAlign: 'center',
+                        fontSize: { xs: '14px', md: '14px' },
+                        marginTop: { xs: '20px', md: '30px' },
+                        px: { xs: 1, md: 0 }
                     }}>
                         I'm not just a developer; I'm a digital dreamweaver. Crafting immersive online experiences is not just a job but my calling.
                     </Typography>
@@ -103,7 +116,10 @@ function Companies() {
                         color: 'gray',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        fontSize: { xs: '14px', md: '14px' },
+                        mt: 1,
+                        px: { xs: 1, md: 0 }
                     }}>
                         Discover below how I can help you.
                     </Typography>
@@ -142,32 +158,32 @@ function Companies() {
                 </Stack>
                 <Typography variant='h5' sx={{
                     fontWeight: 'bold',
-                    marginTop: '60px',
+                    fontSize: { xs: '1.5rem', md: '1.5rem' },
+                    marginTop: { xs: '40px', md: '60px' },
                     textAlign: 'center'
                 }}>
                     My Projects
                 </Typography>
-                <Stack sx={{
-                    fontsize: '10px'
-                }}>
+                <Stack sx={{ px: { xs: 2, md: 0 } }}>
                     <Typography variant='body2' sx={{
                         color: 'gray',
                         textAlign: 'center',
-                        fontSize: '10px'
+                        fontSize: { xs: '12px', md: '10px' },
+                        mt: 2
                     }}>
                         Whether you have a mobile app idea that needs to come to life
                     </Typography>
                     <Typography sx={{
                         color: 'gray',
                         textAlign: 'center',
-                        fontSize: '10px'
+                        fontSize: { xs: '12px', md: '10px' }
                     }}>
                         or a website that requires a facelift, I'm here to turn your digital dreams
                     </Typography>
                     <Typography sx={{
                         color: 'gray',
                         textAlign: 'center',
-                        fontSize: '10px'
+                        fontSize: { xs: '12px', md: '10px' }
                     }}>
                         into reality.
                     </Typography>
@@ -176,33 +192,47 @@ function Companies() {
                     marginTop: '50px'
                 }}>
                     {typeData.map((data, index) => (
-                        <Grid key={index} size={{ xs: 6, md: 3, lg: 3, xl: 3 }}>
-                            <img src={data.img} alt={data.name} style={{ width: '100%', borderRadius: '10px', height: '110px', objectFit: 'cover' }} />
-                            <Typography sx={{
-                                fontWeight: 'bold',
-                                fontSize: '12px',
-                            }}>
-                                {data.text}
-                            </Typography>
-                            <Typography sx={{
-                                color: 'gray',
-                                fontSize: '10px'
-                            }}>
-                                {data.subText}
-                            </Typography>
-                            <Box sx={{
-                                marginTop: '10px'
-                            }}>
-                                <Button sx={{
-                                    backgroundColor: '#000',
-                                    color: '#fff',
-                                    padding: '2px 10px',
-                                    borderRadius: '7px',
-                                    fontSize: '9px',
-                                    textTransform: 'uppercase',
-                                    fontWeight: 'bold'
-                                }}>SEE DETAILS
-                                </Button>
+                        <Grid key={index} size={{ xs: 12, sm: 6, md: 3, lg: 3, xl: 3 }}>
+                            <Box sx={{ p: { xs: 1, md: 0 } }}>
+                                <img 
+                                    src={data.img} 
+                                    alt={data.name} 
+                                    style={{ 
+                                        width: '100%', 
+                                        borderRadius: '10px', 
+                                        height: '110px', 
+                                        objectFit: 'cover' 
+                                    }} 
+                                />
+                                <Typography sx={{
+                                    fontWeight: 'bold',
+                                    fontSize: { xs: '14px', md: '12px' },
+                                    mt: 1
+                                }}>
+                                    {data.text}
+                                </Typography>
+                                <Typography sx={{
+                                    color: 'gray',
+                                    fontSize: { xs: '12px', md: '10px' },
+                                    lineHeight: 1.4,
+                                    mt: 0.5
+                                }}>
+                                    {data.subText}
+                                </Typography>
+                                <Box sx={{
+                                    marginTop: '10px'
+                                }}>
+                                    <Button sx={{
+                                        backgroundColor: '#000',
+                                        color: '#fff',
+                                        padding: { xs: '6px 12px', md: '2px 10px' },
+                                        borderRadius: '7px',
+                                        fontSize: { xs: '10px', md: '9px' },
+                                        textTransform: 'uppercase',
+                                        fontWeight: 'bold'
+                                    }}>SEE DETAILS
+                                    </Button>
+                                </Box>
                             </Box>
                         </Grid>
                     ))}
@@ -468,151 +498,170 @@ function Companies() {
                 </Box>
                 <Grid size={{ xs: 12, md: 6, lg: 6, xl: 6 }}></Grid>
                 <Box sx={{
-                    width: '75%',
+                    width: { xs: '95%', md: '75%' },
                     border: '1px solid gray',
                     borderRadius: '10px',
-                    height: '300px',
+                    minHeight: { xs: 'auto', md: '300px' },
                     margin: 'auto',
-                    marginTop: '50px',
+                    marginTop: { xs: '30px', md: '50px' },
                     boxShadow: '1px 2px',
-
+                    p: { xs: 2, md: 0 }
                 }}>
-                    <Box sx={{
-                        width: '40%',
-                        marginTop: '10px',
-                        marginLeft: '10px',
-                        height: '280px',
-                        backgroundColor: '#212121',
-                        borderRadius: '10px'
-                    }}>
-                        <Typography variant='body2' sx={{
-                            color: '#fff',
-                            padding: '35px 20px',
-                            fontWeight: 'bold',
-
-                        }}>
-                            Contact Information
-                        </Typography>
-                        <Typography variant='body2' sx={{
-                            color: 'gray',
-                            fontSize: '10px',
-                            marginTop: '-25px',
-                            padding: '5px 20px'
-
-                        }}>
-                            Fill up the form and our Team will get back to you within 24 hours.
-                        </Typography>
-                        <Box sx={{
-                            marginTop: '10px'
-                        }}>
-                            <LocalPhoneIcon sx={{
-                                color: '#fff',
-                                marginLeft: '20px',
-                                fontSize: '10px'
-                            }} />
-                            <Typography variant='body2' sx={{
-                                marginLeft: '60px',
-                                color: '#fff',
-                                whiteSpace: 'nowrap',
-                                marginTop: '-17px',
-                                fontSize: '10px',
-                                fontWeight: 'bold'
+                    <Grid container spacing={2}>
+                        <Grid size={{ xs: 12, md: 5 }}>
+                            <Box sx={{
+                                width: '100%',
+                                marginTop: { xs: 0, md: '10px' },
+                                marginLeft: { xs: 0, md: '10px' },
+                                minHeight: { xs: 'auto', md: '280px' },
+                                backgroundColor: '#212121',
+                                borderRadius: '10px',
+                                p: 2
                             }}>
-
-
-
-                                +1(424) 535 3523
-                            </Typography>
-                        </Box>
-                        <Box sx={{
-                            marginTop: '10px'
-                        }}>
-                            <EmailIcon sx={{ color: '#fff', marginLeft: '20px', fontSize: '10px' }} />
-                            <Typography variant='body2' sx={{
-                                color: '#fff',
-                                fontWeight: 'bold',
-                                fontSize: '10px',
-                                marginLeft: '60px',
-                                marginTop: '-17px'
-                            }}>
-                                hello@mail.com
-                            </Typography>
-                        </Box>
-                        <Box>
-                            <ConfirmationNumberIcon sx={{
-                                fontSize: '10px',
-                                color: 'white',
-                                marginTop: '10px',
-                                marginLeft: '20px'
-                            }} />
-                            <Typography sx={{
-                                color: '#fff',
-                                fontWeight: 'bold',
-                                fontSize: '10px',
-                                marginLeft: '60px',
-                                marginTop: '-17px'
-                            }}>
-                                Open Support Ticket
-                            </Typography>
-                        </Box>
-                    </Box>
-                    <Box sx={{
-                        marginLeft: '300px'
-                    }}>
-                        <TextField size='small' variant='standard' placeholder='eg. Lucas' label='First Name' sx={{
-                            marginTop: '-275px',
-                            width: '150px',
-                            paddingRight: '10px'
-                        }} />
-                        <TextField size='small' variant='standard' placeholder='eg. Jones' label='Last Name' sx={{
-                            marginTop: '-275px',
-                            width: '150px'
-                        }} />
-                        <TextField size='small' variant='standard' placeholder='eg. Lucas@mail.com' label='Email' sx={{
-                            marginTop: '-225px',
-                            width: '310px'
-                        }} />
-                        <Box>
-                            <Typography variant='body2' sx={{
-                                color: 'gray',
-                                fontSize: '10px',
-                                marginTop: '-180px'
-                            }}>
-                                What are you interested on?
-                            </Typography>
-                            <FormControl>
-                                <RadioGroup defaultValue="outlined" name="radio-buttons-group">
-                                    <Stack direction={'row'}>
-                                        <Radio size='md' value="outlined" label="Outlined" variant="outlined" />
-                                        <Radio size='md' value="soft" label="Soft" variant="soft" />
-                                        <Radio size='md' value="solid" label="Solid" variant="solid" />
-                                        <Radio size='md' value="plain" label="Plain" variant="plain" />
+                                <Typography variant='body2' sx={{
+                                    color: '#fff',
+                                    fontWeight: 'bold',
+                                    fontSize: { xs: '16px', md: '14px' },
+                                    mb: 2
+                                }}>
+                                    Contact Information
+                                </Typography>
+                                <Typography variant='body2' sx={{
+                                    color: 'gray',
+                                    fontSize: { xs: '12px', md: '10px' },
+                                    mb: 3
+                                }}>
+                                    Fill up the form and our Team will get back to you within 24 hours.
+                                </Typography>
+                                
+                                <Stack spacing={2}>
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                        <LocalPhoneIcon sx={{
+                                            color: '#fff',
+                                            fontSize: { xs: '16px', md: '14px' }
+                                        }} />
+                                        <Typography variant='body2' sx={{
+                                            color: '#fff',
+                                            fontSize: { xs: '12px', md: '10px' },
+                                            fontWeight: 'bold'
+                                        }}>
+                                            +1(424) 535 3523
+                                        </Typography>
+                                    </Box>
+                                    
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                        <EmailIcon sx={{ 
+                                            color: '#fff', 
+                                            fontSize: { xs: '16px', md: '14px' }
+                                        }} />
+                                        <Typography variant='body2' sx={{
+                                            color: '#fff',
+                                            fontWeight: 'bold',
+                                            fontSize: { xs: '12px', md: '10px' }
+                                        }}>
+                                            hello@mail.com
+                                        </Typography>
+                                    </Box>
+                                    
+                                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                        <ConfirmationNumberIcon sx={{
+                                            fontSize: { xs: '16px', md: '14px' },
+                                            color: 'white'
+                                        }} />
+                                        <Typography sx={{
+                                            color: '#fff',
+                                            fontWeight: 'bold',
+                                            fontSize: { xs: '12px', md: '10px' }
+                                        }}>
+                                            Open Support Ticket
+                                        </Typography>
+                                    </Box>
+                                </Stack>
+                            </Box>
+                        </Grid>
+                        
+                        <Grid size={{ xs: 12, md: 7 }}>
+                            <Box sx={{ p: { xs: 0, md: 2 }, mt: { xs: 2, md: 0 } }}>
+                                <Stack spacing={2}>
+                                    <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
+                                        <TextField 
+                                            size='small' 
+                                            variant='standard' 
+                                            placeholder='eg. Lucas' 
+                                            label='First Name' 
+                                            fullWidth
+                                        />
+                                        <TextField 
+                                            size='small' 
+                                            variant='standard' 
+                                            placeholder='eg. Jones' 
+                                            label='Last Name' 
+                                            fullWidth
+                                        />
                                     </Stack>
-                                </RadioGroup>
-                            </FormControl>
-                        </Box>
-                        <Box>
-                            <TextField variant='standard' label='Your Message' sx={{
-                                width: '310px',
-                                marginTop: '10px'
-                            }}>
-
-                            </TextField>
-                            <Button sx={{
-                                backgroundColor: '#000',
-                                padding: '2px 7px',
-                                color: '#fff',
-                                marginTop: '10px',
-                                marginLeft: '190px'
-                            }}>
-                                Send Message
-                            </Button>
-                        </Box>
-
-                    </Box>
+                                    
+                                    <TextField 
+                                        size='small' 
+                                        variant='standard' 
+                                        placeholder='eg. Lucas@mail.com' 
+                                        label='Email' 
+                                        fullWidth
+                                    />
+                                    
+                                    <Box>
+                                        <Typography variant='body2' sx={{
+                                            color: 'gray',
+                                            fontSize: { xs: '12px', md: '10px' },
+                                            mb: 1
+                                        }}>
+                                            What are you interested in?
+                                        </Typography>
+                                        <FormControl>
+                                            <RadioGroup defaultValue="outlined" name="radio-buttons-group">
+                                                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+                                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                        <Radio size='small' value="outlined" />
+                                                        <Typography variant="body2" sx={{ fontSize: { xs: '12px', md: '10px' } }}>Web Dev</Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                        <Radio size='small' value="soft" />
+                                                        <Typography variant="body2" sx={{ fontSize: { xs: '12px', md: '10px' } }}>Mobile</Typography>
+                                                    </Box>
+                                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                        <Radio size='small' value="solid" />
+                                                        <Typography variant="body2" sx={{ fontSize: { xs: '12px', md: '10px' } }}>Design</Typography>
+                                                    </Box>
+                                                </Stack>
+                                            </RadioGroup>
+                                        </FormControl>
+                                    </Box>
+                                    
+                                    <TextField 
+                                        variant='standard' 
+                                        label='Your Message' 
+                                        multiline
+                                        rows={3}
+                                        fullWidth
+                                    />
+                                    
+                                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 2 }}>
+                                        <Button sx={{
+                                            backgroundColor: '#000',
+                                            padding: { xs: '8px 16px', md: '6px 12px' },
+                                            color: '#fff',
+                                            fontSize: { xs: '12px', md: '10px' },
+                                            borderRadius: '8px'
+                                        }}>
+                                            Send Message
+                                        </Button>
+                                    </Box>
+                                </Stack>
+                            </Box>
+                        </Grid>
+                    </Grid>
                 </Box>
             </Box>
-        </>
+        </Container>
     );
 }
 

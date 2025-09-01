@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,77 +14,118 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import HeroSection from './HeroSection.jsx';
 import Companies from './Companies.jsx';
 import Cards from './Card.jsx';
+
 function Header() {
-  return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Container maxWidth='md'>
-        <AppBar position="static" sx={{ color: 'black', backgroundColor: '#fff', boxShadow: 'none' }}>
-          <Toolbar>
-            <Grid container spacing={2}>
-              <Grid size={{ xs: 12, md: 4 }}>
-                <Typography
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 2, fontWeight: 'bold' }}
-                >
-                  Deji Afolabi
-                </Typography>
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
 
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }} sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', }}>
-                <Box sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                }}>
-                  <FolderCopyIcon />
-                  <Typography sx={{
-                    display: 'flex',
-                    marginRight: '10px',
-                  }}>
-                    Page
-                  </Typography>
-                </Box>
-                <Box sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                }}>
-                  <AccountCircleIcon />
-                  <Typography sx={{
-                    display: 'flex',
-                    marginRight: '10px',
-                  }}>
-                    Account
-                  </Typography>
-                </Box>
-                <Box sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                }}>
-                  <InsertDriveFileIcon />
-                  <Typography>
-                    Docs
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid size={{ xs: 12, md: 4 }}>
+  const navigationItems = [
+    { icon: <FolderCopyIcon />, text: 'Page' },
+    { icon: <AccountCircleIcon />, text: 'Account' },
+    { icon: <InsertDriveFileIcon />, text: 'Docs' }
+  ];
 
-              </Grid>
-            </Grid>
-            <Button color="inherit" sx={{ marginLeft: 'auto', }}>SIGN IN</Button>
-            <Button sx={{
+  const drawer = (
+    <Box sx={{ width: 250, pt: 2 }}>
+      <List>
+        {navigationItems.map((item, index) => (
+          <ListItem button key={index}>
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItem>
+        ))}
+        <ListItem button>
+          <ListItemText primary="SIGN IN" />
+        </ListItem>
+        <ListItem>
+          <Button 
+            fullWidth
+            sx={{
               color: '#fff',
               backgroundColor: '#000',
-              marginLeft: '10px',
               borderRadius: '10px',
-              padding: '5px 15px'
-            }}>Blocks</Button>
+              padding: '8px 16px'
+            }}
+          >
+            Blocks
+          </Button>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
+  return (
+    <Box sx={{ flexGrow: 1, width: '100%' }}>
+      <Container maxWidth='lg' sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <AppBar position="static" sx={{ color: 'black', backgroundColor: '#fff', boxShadow: 'none' }}>
+          <Toolbar>
+            <Typography
+              variant="h6"
+              sx={{ 
+                flexGrow: 1, 
+                fontWeight: 'bold',
+                fontSize: { xs: '1.1rem', md: '1.25rem' }
+              }}
+            >
+              Deji Afolabi
+            </Typography>
+            
+            {isMobile ? (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="end"
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon />
+              </IconButton>
+            ) : (
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                {navigationItems.map((item, index) => (
+                  <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                    {item.icon}
+                    <Typography variant="body2">{item.text}</Typography>
+                  </Box>
+                ))}
+                <Button color="inherit" sx={{ ml: 2 }}>SIGN IN</Button>
+                <Button sx={{
+                  color: '#fff',
+                  backgroundColor: '#000',
+                  borderRadius: '10px',
+                  padding: '5px 15px',
+                  ml: 1
+                }}>Blocks</Button>
+              </Box>
+            )}
           </Toolbar>
         </AppBar>
+        
+        <Drawer
+          variant="temporary"
+          anchor="right"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true,
+          }}
+        >
+          {drawer}
+        </Drawer>
         <HeroSection />
         <Companies />
       </Container>
